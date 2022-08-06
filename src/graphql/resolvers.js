@@ -11,6 +11,7 @@ export const resolvers = {
       return user
     },
     allUsers: (parent, args, context) => {
+      console.log('No, I am the last, the resolver [allUsers]!')
       return data.users
     }
   }

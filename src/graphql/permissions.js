@@ -6,14 +6,16 @@ const checkPermission = (userId, permission) => {
   return user.permissions.includes(permission)
 }
 
-const canGetAllUsers = rule()((parent, args, context) => {
-  const userId = context.payload.sub
-  return checkPermission(userId, 'get:all_users')
-})
-
 const isAuthenticated = rule()((parent, args, context) => {
   /* [user] is different of null, then [true] else [false] */
+  console.log('First me [isAuthenticated]!')
   return context.payload !== null
+})
+
+const canGetAllUsers = rule()((parent, args, context) => {
+  console.log('Then me [canGetAllUsers]!')
+  const userId = context.payload.sub
+  return checkPermission(userId, 'get:all_users')
 })
 
 export const permissions = shield({
