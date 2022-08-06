@@ -7,7 +7,7 @@ const checkPermission = (userId, permission) => {
 }
 
 const isAuthenticated = rule()((parent, args, context) => {
-  /* [user] is different of null, then [true] else [false] */
+  /* [context.payload] is different of null, then [true] else [false] */
   console.log('First me [isAuthenticated]!')
   return context.payload !== null
 })
